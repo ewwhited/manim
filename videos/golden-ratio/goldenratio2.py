@@ -1,0 +1,25 @@
+from manimlib.imports import *
+
+class GoldenSpiral(Scene):
+    def construct(self):
+        penult1=TextMobject("$\\varphi =$")
+        penult2=TextMobject("$\\frac{1+\\sqrt{5}}{2}$")
+        penult1.scale(1.5)
+        penult1.to_edge(UP)
+        penult1.shift(2*DOWN+2.2*LEFT)
+        penult2.scale(1.5)
+        penult2.next_to(penult1)
+        self.play(Write(penult1),run_time=1.5)
+        self.play(Write(penult2),run_time=1.5)
+        self.wait(4.5)
+        finalline=TextMobject("$ 1+\\cfrac{1}{1+\\cfrac{1}{1+\\cfrac{1}{1+\\cfrac{1}{1+\\cfrac{1}{1+\\cfrac{1}{1+\\cdots}}}}}}$")
+        finalline.scale(1.15)
+        finalline.next_to(penult1)
+        finalline.shift(2*DOWN)
+        self.play(Transform(penult2,finalline),run_time=1.5)
+        self.wait(3)
+        sig=TextMobject("\\textit{Evan Whited}")
+        sig.scale(0.4)
+        sig.to_edge(DOWN)
+        sig.shift(6*LEFT)
+        self.play(Write(sig))
